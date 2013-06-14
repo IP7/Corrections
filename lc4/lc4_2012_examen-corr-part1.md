@@ -24,7 +24,7 @@ void getConf(char *path, conf *configuration);
 configuration *getConf(char *path);
 ```
 Remarque 1:
-Passer une tructure en argument sans passer par un pointeur n'a pas ici d'interet, car on ne modifira pas la structure d'orrigine.
+Passer une structure en argument sans passer par un pointeur n'a pas ici d'interet, car on ne modifira pas la structure d'origine, mais seulement une copie (locale) de cette derniere (cf passage par valeur).
 
 Remarque 2:
 La dernière solution implique l'utilisation d'un `malloc` dans la fonction, et le pointeur alors renvoyé devra être libéré avec `free`.
@@ -56,7 +56,7 @@ int main(int argc, char **argv) {
         return 1;
 }
 ```
-On déclare un une variable de type conf, et on passe son adresse, grâce à l'opérateur '&'
+On déclare une variable de type conf, et on passe son adresse, grâce à l'opérateur '&'
 
 #### 1.5
 
