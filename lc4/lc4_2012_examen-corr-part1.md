@@ -1,24 +1,34 @@
 # Examen LC4 - 26 mai 2013
 
-### Recuperation et exploitation des données du fichier de configuration
+## Exercice 1: Recuperation et exploitation des données du fichier de configuration
 
 #### 1.1
+
+Il suffit de lire l'énoncer et de reserver une case mémoire pour chaque champ fournis par les fichiers de configuration.
 ```c
 typedef struct {
-	int nbQ;
-	int minY;
-	int minX;
-        int cote;
-	int pasY;
-	int pasX;
+    int nbQ;
+    int minY;
+    int minX;
+    int cote;
+    int pasY;
+    int pasX;
 } configuration;
 ```
 
 #### 1.2
+La fonction doit prendre en argument un fichier (son chemin ?) et remplir une structure configuration avec ces infos. Voici quelques prototypes possibles :
 ```c
 int getConf(char *path, conf *configuration);
+void getConf(char *path, conf *configuration);
+configuration *getConf(char *path);
 ```
-On aurait éventuellement pu définir une fonction prenant en parametre un FILE* au lieu d'un char*, mais on ne pourrait alors pas vérifier que le fichier a été bien ouvert, et avec les droits corrects.
+Remarque 1:
+On ne peut pas passer à la fonction une structure, il faut impérativement passer un pointeur.
+
+Remarque 2:
+La dernière solution implique l'utilisation d'un `malloc` dans la fonction, et le pointeur alors renvoyé devra être libéré avec `free`.
+On aurait éventuellement pu définir une fonction prenant en parametre un `FILE*` au lieu d'un `char*`, mais on ne pourrait alors pas vérifier que le fichier a été bien ouvert, et avec les droits corrects.
 
 #### 1.3
 ```c
