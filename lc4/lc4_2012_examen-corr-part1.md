@@ -34,15 +34,16 @@ On aurait éventuellement pu définir une fonction prenant en parametre un `FILE
 ```c
 int getConf(char *path, configuration *conf) {
 
-    FILE *f = fopen(path, "r");
+  FILE *f = fopen(path, "r");
 
-    int lus = fscanf(f, "%d %d %d %d %d %d",
+  int lus = fscanf(f, "%d %d %d %d %d %d",
                    &(conf->nbQ),
                    &(conf->minY),
                    &(conf->minX),
                    &(conf->cote),
                    &(conf->pasY),
-                   &(conf->pasX))
+                   &(conf->pasX));
+
     return lus == 6;
 }
 ```
@@ -65,33 +66,42 @@ En C (norme ANSI), la déclaration de tableau est possible lorsque la longueur e
 Pour nous aider dans la rédaction, on peut definir un type coord, qui sera un tableau de 2 entiers.
 
 ```c
-typedef int[2] coord;
+typedef int coord[2];
 ```
 Soit des coordonées c, on accède au premier champs (abscisse) avec c[0], et au second champ (ordonnée) avec c[1].
 
 De même, une ligne est une suite de 10 cases, pour recuperer les coordonées des cases, on définit donc :
 ```c
-typedef coord[10] ligne;
+typedef coord ligne[10];
 ```
 Soit une ligne l. Pour acceder à la coordonée x de la 3ème case, on ecrira l[2][0]
 
 Cependant, on ne peut pas utiliser cette methode pour déclarer le tableau. Il faut donc utiliser malloc.
 
 ```c
-ligne *l = malloc(sizeof(ligne)*conf->nbQ);
+int main(int argc, char **argv) {
+  configuration conf;
 
-int i, j;
+  if(!getConf("parQCM.cfg", &conf))
+    return 1;
 
-for(i = 0; i < conf->nbQ; i++) {
+  ligne *l = malloc(sizeof(ligne)*conf.nbQ);
+
+  int i, j;
+
+  for(i = 0; i < conf.nbQ; i++) {
     for(j = 0; j < 10; j++) {
-        l[i][j][0] = x + j*nb->pasX;
-        l[i][j][1] = y + i*nb->pasY;
+      l[i][j][0] = conf.minX + j*conf.pasX;
+      l[i][j][1] = conf.minY + i*conf.pasY;
     }
+  }
+
+  /* ... */
+
+  free(l);
+
+
 }
-
-/* ... */
-
-free(l);
 ```
 
 Attention, la mémoire étant ici allouée avec malloc, il faudra penser à la libérer avec un appel à free une fois qu'on en aura plus besoin.
