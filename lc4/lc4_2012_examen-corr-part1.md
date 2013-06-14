@@ -70,14 +70,14 @@ Pour nous aider dans la rédaction, on peut definir un type coord, qui sera un t
 typedef int coord[2];
 ```
 ##### Utilisation
-Soit des coordonées c, on accède au premier champs (abscisse) avec c[0], et au second champ (ordonnée) avec c[1].
+Soit des coordonées c, on accède au premier champs (abscisse) avec `c[0]`, et au second champ (ordonnée) avec `c[1]`.
 
 De même, une ligne est une suite de 10 cases, pour recuperer les coordonées des cases, on définit donc :
 ```c
 typedef coord ligne[10];
 ```
 ##### Utilisation
-Soit une ligne l. Pour acceder à la coordonée x de la 3ème case, on ecrira l[2][0].
+Soit une ligne l. Pour acceder à la coordonée x de la 3ème case, on ecrira `l[2][0]`.
 
 Cependant, on ne peut pas utiliser cette methode pour déclarer le tableau de ligne (car de longueur variable). Il faut donc utiliser malloc.
 
