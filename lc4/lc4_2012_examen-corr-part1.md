@@ -57,7 +57,7 @@ int main(int argc, char **argv) {
         return 1;
 }
 ```
-On déclare une variable de type conf, et on passe son adresse, grâce à l'opérateur '&'
+On déclare une variable de type conf, et on passe son adresse, grâce à l'opérateur `&`;
 
 ### 1.5
 
