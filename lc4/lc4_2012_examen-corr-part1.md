@@ -19,8 +19,8 @@ typedef struct {
 #### 1.2
 La fonction doit prendre en argument un fichier (son chemin ?) et remplir une structure configuration avec ces infos. Voici quelques prototypes possibles :
 ```c
-int getConf(char *path, conf *configuration);
-void getConf(char *path, conf *configuration);
+int getConf(char *path, configuration *conf);
+void getConf(char *path, configuration *conf);
 configuration *getConf(char *path);
 ```
 Remarque 1:
@@ -32,7 +32,7 @@ On aurait éventuellement pu définir une fonction prenant en parametre un `FILE
 
 #### 1.3
 ```c
-int getConf(char *path, conf *configuration) {
+int getConf(char *path, configuration *conf) {
 
     FILE *f = fopen(path, "r");
 
