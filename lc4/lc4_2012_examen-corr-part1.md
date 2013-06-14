@@ -47,6 +47,7 @@ int getConf(char *path, configuration *conf) {
     return lus == 6;
 }
 ```
+Ici on retourne un int (qui fait office de boolean) pour verifier que la structure a été remplie correctement, mais le type de retour aurait pu être `void` (et la dernière ligne supprimée).
 
 ### 1.4
 ```c
@@ -57,7 +58,7 @@ int main(int argc, char **argv) {
         return 1;
 }
 ```
-On déclare une variable de type conf, et on passe son adresse, grâce à l'opérateur `&`;
+On déclare une variable de type conf, et on passe son adresse, grâce à l'opérateur `&`.
 
 ### 1.5
 
