@@ -13,9 +13,23 @@ typedef struct {
 typedef int coord[2];
 typedef coord ligne[10];
 
+
+/* question 1.6 */
+#define rouge(x) x & 0xFF
+#define vert(x) (x & 0xFF00) >> 8
+#define bleu(x) (x & 0xFF0000) >> 16
+#define estBlanc(x) x & 0xFFFFFF == 0xFFFFFF
+#define estNoir(x) !(x & 0xFFFFFF)
+
+
 int getConf(char *path, configuration *conf) {
 
-  FILE *f = fopen(path, "r");
+  FILE *f;
+  if (!(f = fopen(path, "r")))
+  {
+  	perror ("I/O error");
+  	return -1;
+  }
 
   int lus = fscanf(f, "%d %d %d %d %d %d",
                    &(conf->nbQ),
@@ -33,7 +47,7 @@ int main(int argc, char **argv) {
   configuration conf;
   
   if(!getConf("parQCM.cfg", &conf))
-    return 1;
+    return -1;
   
   printf("Lus: %d %d %d %d %d %d\n",
 	 conf.nbQ,
