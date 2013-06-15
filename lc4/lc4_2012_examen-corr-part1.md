@@ -138,7 +138,7 @@ L'opérateur `&` est le "et" binaire, il effectue une comparaison bit à bit. Ex
 ##### Remarque 3
 L'opérateur de `>>` permet d'effectuer des décalages, exemple : `0b11010101 >> 4 = 0b1101`
 
-#### Remarque 4
+##### Remarque 4
 Pensez toujours à parentheser vos variables dans le corps des macro.
 
 Par exemple, si on écrit `#define rouge(x) (x & 0xFF)`, et que l'on appel cette macro avec `1 && 2` (ne cherchez pas le sens de cet appel) :
