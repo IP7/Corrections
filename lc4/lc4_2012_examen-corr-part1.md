@@ -114,3 +114,22 @@ Ici, conf est de type `configuration`, on peut donc acceder à ses champs avec l
 
 ##### Remarque 3
 A vrai dire, le nombre maximum de question est ici connu (45), on pourrait donc déclarer un tableau de 45 lignes, qu'on ne remplirait que partiellement (le fait que le nombre maximum de ligne soit connu dans l'énoncé pourrait faire croire que c'est même ce qui était attendu).
+
+### 1.6
+
+Ici on applique un filtre sur un entier de 32 bits, afin de sélectionner la composante qui nous intéresse (rouge, bleu ou vert). Dans le cas du vert et du bleu on doit en plus effectuer un décalage à droite.
+```c
+#define rouge(x)        x & 0xFF
+#define vert(x)         (x & 0xFF00) >> 8
+#define bleu(x)         (x & 0xFF0000) >> 16
+#define estNoir(x)      !(x & 0xFFFFFF)
+#define estBlanc(x)     (x & 0xFFFFFF) == 0xFFFFFF
+```
+##### Remarque 1
+La valeur `0xFF` (notation hexadécimal) correspond en binaire à `0b11111111` c'est à dire un octet remplit uniquement avec des 1. Dans la même logique `0xFF00` équivaux à `0b1111111100000000`.
+
+##### Remarque 2
+L'opérateur `&` est le "et" binaire, il effectue une comparaison bit à bit. Exemple : `0b10111101 & 0b11110000 = 0b10110000`
+
+##### Remarque 3
+L'opérateur de `>>` permet d'effectuer des décalages, exemple : `0b11010101 >> 4 = 0b1101`
