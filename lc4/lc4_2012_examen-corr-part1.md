@@ -114,3 +114,13 @@ Ici, conf est de type `configuration`, on peut donc acceder à ses champs avec l
 
 ##### Remarque 3
 A vrai dire, le nombre maximum de question est ici connu (45), on pourrait donc déclarer un tableau de 45 lignes, qu'on ne remplirait que partiellement (le fait que le nombre maximum de ligne soit connu dans l'énoncé pourrait faire croire que c'est même ce qui était attendu).
+
+### 1.6
+Rappel sur les macros : elle doivent etre définie sur une ligne, au moins de terminer la ligne par un backslash `\`
+```c
+#define rouge(x) ((x) & 0x000000FF)
+#define vert(x) (((x) & 0x0000FF00) >> 8)
+#define bleu(x) (((x) & 0x00FF0000) >> 16)
+#define estBlanc (((x) & 0x00FFFFFF) == 0x00FFFFFF)
+#define estNoir (!((x) << 8))
+```
