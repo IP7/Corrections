@@ -1,4 +1,3 @@
-
 # Examen IC2 2012/2013
 
 
@@ -46,7 +45,7 @@ t[9]=40
 System.out.println(...); rajoute une fin de ligne à la fin
 
 ### Question 2:
-la taille mininum de mémoire est 10, effectivement on doit stoker les `10` nombres entré par l'utilisateur. `in.nextInt()` renvoie un entier, donc mémoire sera de type `int[]`.
+la taille mininum de mémoire est `0`.
 
 ### Question 3:
 Le tableau t devient la mémoire, les autres varaibles sont stockées dans la pile.

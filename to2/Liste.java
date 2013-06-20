@@ -12,11 +12,7 @@ public class Liste {
 		this.tete = new Noeud(x, this.tete);
 	}
 
-	/*
-		question 1
-
-		pas possible sans modifier la class Noeud
-	*/
+	// question 1
 	public int nbreZeros() {
 		int nb = 0;
 		Noeud tmp = tete;
@@ -31,6 +27,19 @@ public class Liste {
 
 		return nb;
 	}
+
+	// question 1 version recursive
+	public int nbrezerosRecursive() {
+		auxNbreZeros(tete);
+	}
+
+	public int auxNbreZeros(Noeud tete) {
+		if (tete == null) return 0;
+
+		if (tete.getVal() == 0) return 1 + auxNbreZeros(tete);
+		return auxNbreZeros(tete);
+	}
+
 
 	// question 2
 	public void enlevePremier() {
@@ -50,8 +59,6 @@ public class Liste {
 		n.setVal(n.getVal() + n.getSuivant().getVal());
 	}
 
-
-
 	// bonus
 	public String toString() {
 		Noeud tmp = tete;
@@ -69,7 +76,7 @@ public class Liste {
 		return str += ")";
 	}
 
-
+	// bonus
 	public static void main(String[] args) {
 		Liste l = new Liste();
 		l.ajouter(0);
