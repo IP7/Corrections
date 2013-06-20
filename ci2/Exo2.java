@@ -19,7 +19,6 @@ public final class Exo2 {
       public static void main(final String[] args) {
             int ic = 0; // instruction courante
             int[] memoire = new int[10];
-            int i;
 
             // pile d'entier
             Stack<Integer> p = new Stack<Integer>();
