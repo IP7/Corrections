@@ -1,11 +1,10 @@
-
 // import le scanner
 import java.util.Scanner;
 // import l'object stack (la pile)
 import java.util.Stack;
 
 /**
- * @author: Guillaume Guerin and iskeinder ka
+ * @author: Guillaume Guerin et Iskeinder Ka
  *
  * correction exame CI2 2012/2013 :: exercice 2 :: question 4
  */
