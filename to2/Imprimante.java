@@ -30,9 +30,4 @@ public class Imprimante {
 		quantite += nombreDeFeuille;
 		return 0;
 	}
-
-	// question 4
-	public void remplissageEncre(int volume, String couleur) {
-		cartouche.remplissage(volume, couleur);
-	}
 }
