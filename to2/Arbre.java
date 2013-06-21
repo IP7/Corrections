@@ -1,5 +1,4 @@
 
-
 public class Arbre {
 	
 	private NoeudArbre racine;
@@ -33,7 +32,7 @@ public class Arbre {
 			a.setDroit(new NoeudArbre(n));
 		} else {
 			if (a.getDroit() != null) aux(a.getDroit(), n);
-			if (a.getGauche() != null) aux(a.getDroit(), n);
+			if (a.getGauche() != null) aux(a.getGauche(), n);
 		}
 	}
 }
