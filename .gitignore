@@ -1,7 +1,50 @@
 *~
+
+# Vim
 *.swp
 *.swo
+Session.vim
+
+# Emacs
+\#*\#
+
+# ST
+*.sublime-workspace
+
+# Java
 *.class
+*.jar
+
+# C
+a.out
+
+# Python
 *.pyc
+__pycache__
+
+# OCaml
+*.annot
+*.cmo
+*.cma
+*.cmi
+*.a
 *.o
+*.cmx
+*.cmxs
+*.cmxa
+
+# R
+.Rhistory
+
+# LaTeX
+*.aux
+*.dvi
+*.idx
+*.log
+*.ps
+*.toc
+
+# OS X
 .DS_Store
+.Spotlight-V100
+.Trashes
