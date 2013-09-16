@@ -44,6 +44,10 @@ __pycache__
 *.ps
 *.toc
 
+# PDF & co
+*.pdf
+*.ps
+
 # OS X
 .DS_Store
 .Spotlight-V100
