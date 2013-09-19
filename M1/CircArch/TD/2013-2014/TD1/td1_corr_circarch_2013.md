@@ -52,3 +52,12 @@ _voir la 1ere case pour l'expression simplifiée_
 2 - b EQ d  
 3 - (NON c).d + d.(NON a) + (NON b).(NON c)  
 4 - NON( b EQ d)
+
+## Exercice 5 
+
+1 - (a.b).c  
+2 - (a.b)+c  
+3 - (a+b)+c  
+4 - (a+c).(c+b)  
+5 - NON( NON(a+b) + NON(c) )  
+6 - (a XOR b)+(c XOR b)  
