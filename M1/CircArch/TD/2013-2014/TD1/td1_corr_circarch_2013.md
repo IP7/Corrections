@@ -1,4 +1,4 @@
-# Correction du TD 1 de Circuits et Architecture, année 2013/2014
+﻿# Correction du TD 1 de Circuits et Architecture, année 2013/2014
 
 ## Exercice 1
 
@@ -34,3 +34,14 @@ a donc `F(a,b) = b`.
 ### Exercice 2.7
 
 ![](ex2-7.png)
+
+## Exercice 3
+
+### Exercice 3.1
+
+![](ex3-1.png)
+
+### Exercice 3.2
+
+![](ex3-2.png)
+_voir la 1ere case pour l'expression simplifiée_
