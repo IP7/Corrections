@@ -43,5 +43,12 @@ a donc `F(a,b) = b`.
 
 ### Exercice 3.2
 
-![](ex3-2.png)
+![](ex3-2.png)  
 _voir la 1ere case pour l'expression simplifiée_
+
+## Exercice 4
+
+1 - (NON c) + b  
+2 - b EQ d  
+3 - (NON c).d + d.(NON a) + (NON b).(NON c)  
+4 - NON( b EQ d)
