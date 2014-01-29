@@ -2,6 +2,11 @@ import java.util.*;
 import java.text.*;
 import javax.swing.*;
 import java.awt.event.MouseListener;     
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import java.awt.event.KeyEvent;     
 import java.awt.event.MouseEvent;    
 import java.awt.*;
 class Ex2 extends JPanel implements MouseListener{
@@ -84,18 +89,6 @@ class Ex4 extends JPanel{
     }
 }
 
-/* Ex5 */
-class Ex5_fr_FR extends ListResourceBundle{
-    protected Object[][] getContents() {
-	return new Object[][] {
-	    // LOCALIZE THE SECOND STRING OF EACH ARRAY (e.g., "OK")
-	    {"OkKey", "OK"},
-	    {"CancelKey", "Cancel"},
-	    // END OF MATERIAL TO LOCALIZE
-        };
-    }
-}
-
 class Ex5 extends JPanel{
     Ex5(){
 	this.setSize(Tp1.fenetre_x, Tp1.fenetre_y);
@@ -103,9 +96,9 @@ class Ex5 extends JPanel{
 	Locale locale_FR = new Locale("fr","FR");
 	Locale locale_WE = new Locale("we","WE");
 	ResourceBundle bundle1 =
-	    ResourceBundle.getBundle("Ex5", locale_FR);
+	    ResourceBundle.getBundle("Ex5", locale_FR); // on va chercher dans Ex5_fr_FR.properties
 	ResourceBundle bundle2 =
-	    ResourceBundle.getBundle("Ex5", locale_WE);
+	    ResourceBundle.getBundle("Ex5", locale_WE); // idem pour WE
 	this.add(new JLabel("Message in " + locale_FR + ": " + bundle1.getString("greeting")));
 	this.add(new JLabel("Message in " + locale_WE + ": " + bundle2.getString("greeting")));
 	this.setVisible(true);
@@ -162,7 +155,7 @@ public class Tp1
     }
 }
 
-/* Ex6 */
+/* Ex6, Ex7 Ex8*/
 class Fenetre extends JFrame
 {
     int taille_x = Tp1.fenetre_x ;
@@ -183,18 +176,19 @@ class Fenetre extends JFrame
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	setVisible(true);
 	
-	item = new JMenuItem[10];
-	item[0] = new JMenuItem("Nouveau");
-	item[1] = new JMenuItem("Ouvrir");
-	item[2] = new JMenuItem("Enregistrer");
-	item[3] = new JMenuItem("Enregistrer sous ...");
-	item[4] = new JMenuItem("Quitter");
+	item = new JMenuItem[11];
+	item[0] = new JMenuItem("Nouveau", KeyEvent.VK_N);
+	item[1] = new JMenuItem("Ouvrir", KeyEvent.VK_O);
+	item[2] = new JMenuItem("Enregistrer", KeyEvent.VK_S);
+	item[3] = new JMenuItem("Enregistrer sous ...", KeyEvent.VK_E);
+	item[4] = new JMenuItem("Quitter", KeyEvent.VK_Q);
 	
-	item[5] = new JMenuItem("Annuler");
-	item[6] = new JMenuItem("Rétablir");
-	item[7] = new JMenuItem("Couper");
-	item[8] = new JMenuItem("Copier");
-	item[9] = new JMenuItem("A propos");
+	item[5] = new JMenuItem("Annuler", KeyEvent.VK_Z);
+	item[6] = new JMenuItem("Rétablir", KeyEvent.VK_Y);
+	item[7] = new JMenuItem("Couper", KeyEvent.VK_X);
+	item[8] = new JMenuItem("Copier", KeyEvent.VK_C);
+	item[9] = new JMenuItem("Manuel", KeyEvent.VK_M);
+	item[10] = new JMenuItem("Tutoriel", KeyEvent.VK_T);
 	
 	for(int i = 0 ; i < 5; i++){
 	    fichier.add(item[i]);
@@ -205,11 +199,15 @@ class Fenetre extends JFrame
 	}
 	
 	aide.add(item[9]);
-	
+	aide.add(item[10]);
+
+	fichier.setMnemonic(KeyEvent.VK_F);	
+	edition.setMnemonic(KeyEvent.VK_E);
+	aide.setMnemonic(KeyEvent.VK_H);
 	
 	this.menuBar.add(fichier);
 	this.menuBar.add(edition);
-	//this.menuBar.setHelpMenu(null); // "setHelpMenu() not yet implemented." 
+	this.menuBar.add(aide); // "setHelpMenu() not yet implemented." 
 	this.setJMenuBar(menuBar);
     }
 }
