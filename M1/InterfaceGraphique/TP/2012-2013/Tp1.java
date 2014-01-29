@@ -84,7 +84,32 @@ class Ex4 extends JPanel{
     }
 }
 
-class Ex5 extends JPanel{ //todo
+/* Ex5 */
+class Ex5_fr_FR extends ListResourceBundle{
+    protected Object[][] getContents() {
+	return new Object[][] {
+	    // LOCALIZE THE SECOND STRING OF EACH ARRAY (e.g., "OK")
+	    {"OkKey", "OK"},
+	    {"CancelKey", "Cancel"},
+	    // END OF MATERIAL TO LOCALIZE
+        };
+    }
+}
+
+class Ex5 extends JPanel{
+    Ex5(){
+	this.setSize(Tp1.fenetre_x, Tp1.fenetre_y);
+	this.setLayout(new  GridLayout(2, 1));
+	Locale locale_FR = new Locale("fr","FR");
+	Locale locale_WE = new Locale("we","WE");
+	ResourceBundle bundle1 =
+	    ResourceBundle.getBundle("Ex5", locale_FR);
+	ResourceBundle bundle2 =
+	    ResourceBundle.getBundle("Ex5", locale_WE);
+	this.add(new JLabel("Message in " + locale_FR + ": " + bundle1.getString("greeting")));
+	this.add(new JLabel("Message in " + locale_WE + ": " + bundle2.getString("greeting")));
+	this.setVisible(true);
+    }
 }
 
 
@@ -131,7 +156,7 @@ public class Tp1
 			e.printStackTrace();
 		    }
 		    Tp1.getInstance().setFen(new Fenetre());
-		    Tp1.getInstance().getFen().setContentPane(new Ex6());
+		    Tp1.getInstance().getFen().setContentPane(new Ex5());
 		}
 	    });
     }
