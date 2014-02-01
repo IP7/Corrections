@@ -14,8 +14,7 @@ void ex1(){
   if(i == 0){
     printf("je suis le fils\n");
   } else {
-    int status;
-    if(wait(&status) == -1){
+    if(wait(NULL) == -1){
       perror("wait : wrong");
       exit(1);
     }
@@ -33,8 +32,7 @@ void ex2(){
       printf("b\n");
     }
   } else {
-    int status;
-    if(wait(&status) == -1){
+    if(wait(NULL) == -1){
       perror("wait : wrong");
       exit(1);
     }
