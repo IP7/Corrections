@@ -2,16 +2,15 @@
 #include <string.h>
 #include <unistd.h>
 #include <errno.h>
-
+#define BUFFER_SIZE 128
 int main()
 {
-  //size_t count = 128;
-  char c[128];
-  char buffer[128];
+  char c[BUFFER_SIZE];
+  char buffer[BUFFER_SIZE];
   ssize_t i;
   int j = 0, k = 0, nb_chars = 0;
   
-  while((i = read(0, c, 128)) > 0){
+  while((i = read(0, c, BUFFER_SIZE)) > 0){
     if(!strcmp(c, "exit\n")){
       return 0;
     }
@@ -31,7 +30,7 @@ int main()
 	buffer[j] = c[k];
       }
     }
-    k = (c[255] == '*') ? 1 : 0;
+    k = (c[BUFFER_SIZE-1] == '*') ? 1 : 0;
     
     if(nb_chars > 80){
       write(1, "\n", 1);
@@ -40,7 +39,7 @@ int main()
     if(write(1, buffer, j) == -1){
       perror("write: wrong");
     }
-    for(j = 0; j < 256; j++){
+    for(j = 0; j < BUFFER_SIZE; j++){
       c[j] = 0;
     }
   }
