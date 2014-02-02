@@ -1,7 +1,9 @@
 #include <iostream>
 #include <cmath>
 #include <cstdlib>
+#include <cstring>
 #include <time.h> 
+
 using namespace std;
 
 //ex3 & 4
@@ -75,11 +77,15 @@ int main(int argc, char *argv[]){
     cout << "Hello World" << endl; 
     break;
   case '3': case '4':
-    if(argc < 4){
+    if(argc < 4 || (strlen(argv[2]) != 1 || 
+		    (argv[2][0] != 'd' 
+		     && argv[2][0] != 'r' 
+		     && argv[2][0] != 'g'))){
       cout << "need arguments: <d(degre), g(grade), r(radian)> <int>" << endl;
       break;
     } 
-    calcul_sin(argv[2][0], atoi(argv[3]));
+    cout << calcul_sin(argv[2][0], atoi(argv[3])) << endl;;
+    break;
   case '5':
     if(argc < 4){
       cout << "need arguments: <int/double> <int/double>" << endl;
