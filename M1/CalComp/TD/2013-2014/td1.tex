@@ -1,0 +1,115 @@
+%pour generer le pdf en ligne de commande : pdflatex td1.tex && evince td1.pdf
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage[francais]{babel}
+
+\title{Correction du TD1 de Calculabilité et Complexité}
+\author{Thomas Salmon}
+\date{03/02/2014}
+
+\begin{document}
+\maketitle
+
+\begin{math}
+  \begin{array}{ll}
+    \mathbb{E} $ dénombrable$
+    &\equiv \exists f $ bijection $ f:\mathbb{E} \rightarrow \mathbb{N}\\
+    &\equiv \exists g $ bijection $ g:\mathbb{N} \rightarrow \mathbb{E}\\
+    &\equiv \exists h $ bijection $ h:\mathbb{E} \rightarrow \mathbb{F} $ avec $ \mathbb{F} $ denombrable $ \\
+    \varphi $ une bijection$\\
+  \end{array} 
+\end{math}
+
+\section{}
+\begin{math}
+  \mathbb{P} = \{0, 2, \dots \} $ est dénombrable$ \\
+  f:\mathbb{N}\rightarrow \mathbb{P}\\
+  f(n)=2n \\
+  f $ injective si $ f(n_1) = f(n_2) $ alors $ 2n_1 = 2n_2 \Rightarrow n_1 = n_2\\
+  $si $ \forall p \in \mathbb{P} , \exists n \in \mathbb{N} $ tel que $ f(n) = p $ il suffit de prendre $ p/2 
+\end{math}
+
+\section{}
+\begin{math}
+  \mathbb{P} = \{2, 3, 5, 7, 11, 13, \dots \} $ est dénombrable$ \\
+  f:\mathbb{N}\rightarrow \mathbb{P} \\
+  f(n) = n^{eme} $ nombre premier $  \\ 
+  f(n) =
+  \left\{
+  \begin{array}{rcr}
+    2 \\
+    $NEXT PRIME$(f(n-1))\\
+  \end{array}
+  \right.\\
+  $NEXT PRIME$(x) = $le plus petit premier  $ > x
+\end{math}
+
+\section{}
+\begin{math}
+  f(n) = 
+  \left\{
+  \begin{array}{rcr}
+    num(A) \\
+    num\{a \in A | a > f(n-1)\}\\
+  \end{array}
+  \right.\\
+\end{math}
+\newpage
+\section{}
+\begin{math}
+  E_1, E_2 $ dénombrable, montrez que $ E_1 \cup E_2 $ denombrable $ \\
+  E_1 = \{e_0^{1}, e_1^{1}, e_2^{1}, \dots \} \\
+  E_2 = \{e_0^{2}, e_1^{2}, e_2^{2}, \dots \} \\
+  \\
+  E_1 \cup E_2 = \{e_0^{1}, e_0^{2}, e_1^{1}, e_1^{2}, \dots \}\\
+  $Soit $ e \in E_1  \cup E_2 $, pour calculer $ f:E_1 \cup E_2 \rightarrow \mathbb{N} \\
+  $soit $ e $ est dans $ E_1 $ soit dans $ E_2 $, si $ e $ est dans $ E_1 $, il est dans $ \{e_0^{1}, e_1^{1}, e_2^{1}, \dots \} $,$\\
+  $alors $ \exists j $ tel que $ e = e_j^{1} $ donc$\\
+  f(e) = 
+  \left\{
+  \begin{array}{rcr}
+    2j $ si $ e \in E_1  \\
+    2j+1 $ si $ e \in E_2  \\
+  \end{array}
+  \right.
+\end{math}
+\section{}
+\begin{math}
+  \begin{array}{ll}
+    E_1 = e_0^{1}, e_1^{1}, \dots \\
+    E_2 = e_0^{2}, e_1^{2}, \dots \\
+    E_3 = e_0^{3}, e_1^{3}, \dots \\
+    \dots \\
+    E_m = e_0^{m}, e_1^{m}, \dots \\
+  \end{array} \\
+  $Soit $ e \in E_1 \cup E_2 \cup \dots \cup E_m $ la définition de $ f(e) $ est$ \\
+  f(e) =   
+  \left\{
+  \begin{array}{rcr}
+    mj $ si $ E_1\\
+    \dots \\
+    mj+m(-1) $ si $ E_m\\
+  \end{array}
+  \right.\\
+\end{math}
+
+\section{}
+idem
+
+\section{}
+\begin{math}
+f(\mathbb{N}) = \mathbb{Z} $, $ n \in \mathbb{N}
+f(n) = 
+\left\{
+\begin{array}{rcr}
+  n/2 $ si $ n $ est pair$ \\
+  (n+1)/2 $ sinon$
+\end{array}
+\right.\\
+\end{math}
+\end{document}
