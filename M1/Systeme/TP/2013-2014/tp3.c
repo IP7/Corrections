@@ -1,5 +1,5 @@
 /*
-  Note du correcteur : je n'ai pas fais la question 2.3
+  Note du correcteur : je n'ai pas fais la question 2.3, ni le 3
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,8 +9,8 @@
 #include <string.h>
 
 void test_exec(char *cmd, char *args[]){
-  if(execve(cmd, args, NULL) == -1){  
-    perror("execve");
+  if(execvp(cmd, args) == -1){  
+    perror("execv");
     exit(1);
   }
 }
@@ -20,16 +20,31 @@ void ex1(int argc, char *argv[]){
   int i = 2;
   pid_t p;
 
-  exo_arg = malloc(sizeof(char *) * (argc - 1));
+  if(argc != 2){
+    puts("trop d'arguments");
+    return ;
+  }
+
+  if((exo_arg = malloc(sizeof(char *) * (argc))) == NULL){
+    perror("malloc");
+    exit(1);
+  }
   exo_arg[0] = argv[0];
   for(; i < argc; i++){
     exo_arg[i-1] = argv[i];
   }
+  exo_arg[argc - 1] = NULL;
+  
+  for(i = 0; i < argc -1; i++){
+    printf("exo_arg[%d] = %s\n", i, exo_arg[i]);
+  }
+  
+
   if((p = fork()) == -1){
     perror("fork");
     exit(1);
   } else if (p == 0){
-    test_exec("/bin/ls", exo_arg);
+    test_exec("ls", exo_arg);
   } else {
     if(wait(NULL) == -1){
       perror("wait");
@@ -41,63 +56,45 @@ void ex1(int argc, char *argv[]){
 
 void ex2(int argc, char *argv[]){
   char **exo_arg;
-  int i = 2;
+  int i;
   pid_t p;
   char *cmd;
   if(argc < 3){
     puts("need argument <bin/<cmd>>");
     return ;
   }
-  exo_arg = malloc(sizeof(char *) * (argc - 2));
-  cmd = malloc(strlen("/bin/") + strlen(argv[2]));
-  strcpy(cmd, "/bin/");
-  strcat(cmd, argv[2]);
-  exo_arg = malloc(sizeof(char *) * (argc));
-  exo_arg[0] = cmd;
+  i = strlen(argv[2]) + 1;
+  if((cmd = malloc(i + 1)) == NULL){
+    perror("malloc");
+    exit(1);
+  }
+  cmd[i] = '\0';
+  snprintf(cmd, i, "%s", argv[2]);
+  if((exo_arg = malloc(sizeof(char *) * (argc - 1))) == NULL){
+    perror("malloc");
+    exit(1);
+  }
   for(i = 2; i < argc; i++){
     exo_arg[i-2] = argv[i];
   }
-  exo_arg[i] = NULL;
+  exo_arg[i-2] = NULL;
+  exo_arg[0] = cmd;
   if((p = fork()) == -1){
     perror("fork");
     exit(1);
   } else if (p == 0){
     test_exec(cmd, exo_arg);
   } else {
-    int etat;
-    if(wait(&etat) == -1){
+    if(wait(NULL) == -1){
       perror("wait");
       exit(1);
     }
-    printf("Stat at the end of program = %d\n", etat);
   }
   free(cmd);
+  free(exo_arg);
 }
 
-/*
-  il faut mettre le chemin complet de la commande pour qu'elle fonctionne
-*/
-void ex3(int argc, char *argv[]){  
-  char *result[1];
-  if(argc < 4){
-    puts("need argument (false|true) </bin/cmd> [</bin/cmd>]");
-    return ;
-  }
-  
-  result[0] = argv[3];
-  result[1] = NULL;
-  
-  if(!strcmp(argv[2], "true")){
-    test_exec(argv[3], result);
-  } else if(!strcmp(argv[2], "false")){
-    if(argc == 5 ){
-      result[0] = argv[4];
-      test_exec(argv[4], result);
-    }
-  } else {
-    puts("test non reconnu");
-  }
-}
+void ex3(int argc, char *argv[]){}
 
 int main(int argc, char *argv[]){
   
