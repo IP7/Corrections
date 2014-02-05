@@ -1,0 +1,33 @@
+body{
+    font-family: Arial, Sans-Serif;
+    color: grey;
+}
+
+#banniere{ 
+   text-align: center;
+   border: 5px solid DarkBlue;
+   background: CornflowerBlue;
+   margin: auto;
+   width: 200px;
+}
+
+nav, article{
+    float: right;
+}
+
+nav{
+    border: 1px solid black;
+}
+
+nav li{
+    list-style-type: none;
+}
+article header{
+    text-align: right;
+    font-weight: bold;
+}
+
+article img{
+    float: left;
+}
+
