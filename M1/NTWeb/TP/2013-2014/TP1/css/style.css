@@ -8,15 +8,17 @@ body{
    border: 5px solid DarkBlue;
    background: CornflowerBlue;
    margin: auto;
-   width: 200px;
+   width: 20em;
 }
 
 nav, article{
-    float: right;
 }
 
 nav{
     border: 1px solid black;
+    position: fixed;
+    right: 0;
+    background: white;
 }
 
 nav li{
@@ -29,5 +31,6 @@ article header{
 
 article img{
     float: left;
+    padding: 10px;
 }
 
