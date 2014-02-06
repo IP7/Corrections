@@ -1,0 +1,84 @@
+%pour generer et afficher le pdf en ligne de commande : pdflatex td1.tex && evince td1.pdf
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+%\usepackage[]{algorithm2e}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage[francais]{babel}
+
+\title{Correction du TD1 d'Algorithmique Avancée}
+\author{Thomas Salmon}
+\date{06/02/2014}
+
+\begin{document}
+\maketitle
+\section{Exercice 1. Bris de vase}
+\subsection{}
+Recherche par dichotomie $O(log(n))$
+\subsection{}
+On commence par essayer de jeter le vase du 1er étage, puis du second, et ainsi de suite jusqu'a ce que le vase se brise $O(n)$
+\subsection{}
+On découpe les étages en intervalles, On essaye de lancer un vase depuis chaque premier étage de ces intervalles, jusqu'a ce qu'on brise un vase, alors, on prend le dernier intervalle et on teste linéairement chacun des étages jusqy'a ce que l'on casse le second vase $O(\frac{n}{x}+p)$ ou $x$ est la taille d'un intervalles  
+
+Comment choisir ces intervalles ? 
+
+Il faut se servir des dérivés: trouver $x$ tel que $\frac{n}{x}+x = 0$ (il faut le choisir de façon a minimiser le temps que prendre de casser le vases et également de minimiser le temps que prendre de casser le deuxième) \\
+
+\begin{math}
+  \frac{d.(\frac{n}{x}+x)}{dx} \Rightarrow \frac{-n}{x^2} + 1 = 0 \Rightarrow n = x^2 \Rightarrow \sqrt{n} = x
+\end{math}\\
+
+$\sqrt{n}$ est donc la taille d'un interval. Sachant que nous comptons casser nos deux vases en choisissant ces intervalles, la complexité de l'algorithme est en fait $2\sqrt{n}$ (on test $\sqrt{n}$ étages, puis comme la taille d'un intervalles est de $\sqrt{n}$ et qu'il faut -au pire- le parcourir dans son intégralité, on addition ces deux complexité)
+\subsection{}
+Pour 3 vases:  
+
+On se ramene au problème précédent sauf que si l'on va découper les intervalles, de l'immeuble, en sous intervalles.
+coûts : 
+
+\begin{math}
+  \frac{n}{\alpha} +2\sqrt{\alpha} = \frac{\alpha^\frac{3}{2}-n}{\alpha^2}
+\end{math}
+
+\subsection{}
+\begin{math}
+k $ vases $ \rightarrow k\sqrt[k]{n}
+\end{math}
+
+\subsection{}
+\begin{description}
+\item 1 coup si $k \rightarrow \infty+$ (on lance un vase par etage en meme temps)
+\item $n$ coups si $k = 1$
+\item Si $k$ = 2 alors $2\sqrt{n-1}$ (on lance un vase à $i\sqrt{n}$, et en meme temsps un 2e a l'intervalle $(i-1)\sqrt{n}+1$ en phase 1, en somme le parallelisme fais économiser un unique jet de vase
+\item $k\sqrt[k]{n-k}$ si on a k vases (en l'utilisant la technique des intervalles)
+\end{description}
+Le parralelisme n'apporte pas vraiment de solution au problème
+
+\section{Exercice 2. Boulons}
+Pour chaque écrou $e$, on va comparer un ensemble de vis, on met dans un ensemble $V_1$, les vises qui sont trop petites pour l'écrou $e$, et dans l'ensemble $V_2$, celles qui sont trop grandes\\
+Puis on prend la bonne vise $v$ qui convient a notre écrou, et on lui fait comparer un ensemble d'écrous, on met dans l'ensemble $E_1$, les écrous qui sont trop petis, et dans $E_2$, ceux qui sont trop grands, et on recommence toute l'opération depuis le debut pour chaque sous ensemble en prenant ($E_1, V_1$) et ($E_2, V_2$)
+
+La i-eme vis est composé avec le j-eme ecrou (proba : $\frac{1}{j-1}$) ou, la j-eme vise est composé avec le ieme écrou(proba : $\frac{1}{j-1}$), ($i$ et $j$ dans l'ordre des tailles qui est inconnu)
+
+Le i-eme boulon est composé avec le j-eme ecrou avec proba $\frac{2}{j-1}$
+
+En moyenne la complexité est donc $O(n log(n))$.
+
+\section{Exercice 3}
+\subsection{}
+i tel que $T[i] > T[i+1]$
+\subsection{}
+$O(n)$
+\subsection{}
+temps constant
+\subsection{}
+Algo:
+Pour i de 0 à $n-2$ 
+Si $T[i] > T[i+1]$ alors echec finSi
+FinPour
+succes 
+
+il n'y a pas d'algo verifiant pour tester qu'un tableau de $n$ soit trié, une seule case peut invalider la propriété est trié" donc il faut les lire toutes.
+\end{document}
