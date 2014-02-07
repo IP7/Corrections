@@ -1,0 +1,152 @@
+%pour generer et afficher le pdf en ligne de commande : pdflatex td1.tex && evince td1.pdf
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+%\usepackage[]{algorithm2e}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage[francais]{babel}
+
+\title{Correction du TD1 d'Infographie}
+\author{Thomas Salmon}
+\date{07/02/2014}
+
+\begin{document}
+\maketitle
+\section{Geometrie du plan}
+\subsection{Exercice 1}
+\subsubsection{a)}
+\begin{math}  
+  A \equiv P_0$, $ \overrightarrow{U} \equiv \overrightarrow{P_0P_1} \\  
+  $conditon$ \overrightarrow{P_0 P_1} \propto \overrightarrow{P_0M} = 0
+\end{math}
+\subsubsection{b)}
+\begin{math}
+  P_0 = (x_0, y_0)$, $ P_1 = (x_1, y_1)$, $ M = (x, y) \\
+  \begin{pmatrix}
+    x_1 - x_0\\
+    y_1 - y_0
+  \end{pmatrix}
+  \propto
+  \begin{pmatrix}
+    x - x_0\\
+    y - y_0
+  \end{pmatrix}
+  = 0 \\
+  (x_1 - x_0)(y - y_0) - (y_1 - y_0)(x - x_0) = 0 \\
+  ax + by + c = 0 \\
+  \\
+  a = -(y_1 - y_0), b = (x_1 - x_0)\\
+  \rightarrow \overrightarrow{P_1P_0} =  
+  \begin{pmatrix}
+    b\\
+    a
+  \end{pmatrix}
+\end{math}
+\subsubsection{c)}
+\[ 
+\left\{
+\begin{array}{r c l}
+  \overrightarrow{P_0P_1} & \propto & \overrightarrow{P_0M} \\
+  \overrightarrow{P_0P_1} & \propto & \overrightarrow{P_0M'}
+\end{array}
+\right .
+\]
+Les deux sont de meme signe.
+\subsubsection{d}
+
+\subsection{Exercice 2}  
+vecteurs directeurs
+\begin{math}
+  \begin{pmatrix}
+    b\\
+    -a
+  \end{pmatrix}
+  $ (cf 1.b)$\\
+  ax + by + c = 0 \\
+  b = 0 \Rightarrow $ la droite est celle des ordonnées, et le x commun est calculable$ \\ 
+  a = 0 \Rightarrow $ la droite est celle des abscisses, et le y commun est calculable$ \\
+\end{math}
+\begin{description}
+\item si $a \neq 0$:
+\[ 
+\begin{pmatrix}
+  \frac{-c}{a}\\
+  0
+\end{pmatrix}
+\left\{
+\begin{array}{l}
+  $pour $ y = 0 $ , on a $ ax + c = 0 \\
+  $et pour $ x = \frac{-c}{a}
+\end{array}
+\right .
+\]
+\item si $b \neq 0$:
+\[ 
+\begin{pmatrix}
+  0\\
+  \frac{-c}{b}
+\end{pmatrix}
+\left\{
+\begin{array}{l}
+  $pour $ x = 0 $ , on a $ by + c = 0 \\
+  $et pour $ y = \frac{-c}{b}
+\end{array}
+\right .
+\]
+\end{description}
+\subsection{Exercice 3}
+On calcul (1.b) 
+\begin{description}
+\item l'équation de la droite $(AB)$
+\item l'équation de la droite $(CD)$
+\end{description}
+On obtient un systeme linéaire que l'on résoud par Pivot de Gauss\\
+On obtient un point d'intersection $I$ et l'on vérifie que $I$ appartienne à $[AB]$ et à $[CD]$ (1.d)
+\section{Partie II}
+\subsection{Exercice 2}
+\subsubsection{a}
+\begin{description}
+\item 2 dim : $\overrightarrow{U} \propto \overrightarrow{AM} \Leftrightarrow M \in \mathcal{D}$
+\item 3 dim : $\overrightarrow{N} \circ \overrightarrow{AM} \Leftrightarrow M \in \mathcal{P}$
+\end{description}
+\subsubsection{b}
+\begin{math}
+\begin{pmatrix}
+  N_x\\
+  N_y\\
+  N_z
+\end{pmatrix}
+\circ
+\begin{pmatrix}
+  A_x - x\\
+  A_y - y\\
+  A_z - z
+\end{pmatrix}
+= N_x(A_x -x) + N_y(A_y + y) + N_z(A_z + z) = 0 $  (equation du plan)$
+\end{math}
+\subsubsection{c}
+meme question que b: \\
+$\overrightarrow{N} \circ \overrightarrow{AM}$ et $\overrightarrow{N} \circ \overrightarrow{AM}$ de meme signe
+\subsubsection{d}
+dim 2 : \\
+\begin{math}
+\overrightarrow{AB} \propto \overrightarrow{AI} = 0\\
+\overrightarrow{AB} \propto (\overrightarrow{AM} + \overrightarrow{MI}) = 0\\
+\overrightarrow{AB} \propto (\overrightarrow{AM} + k\overrightarrow{U}) = 0
+\end{math}
+
+dim 3 : \\
+\begin{math}
+  \overrightarrow{N} \circ \overrightarrow{AI} = 0\\
+  \overrightarrow{AB} \circ (\overrightarrow{AM} + \overrightarrow{MI}) = 0\\
+  \overrightarrow{AB} \circ (\overrightarrow{AM} + k\overrightarrow{U}) = 0
+\end{math}
+
+\begin{math}
+  \overrightarrow{N} \circ \overrightarrow{AM} + \overrightarrow{N} \circ k\overrightarrow{U}\\
+  \overrightarrow{N} \circ \overrightarrow{AM} + k(\overrightarrow{N} \circ \overrightarrow{U})\\
+\end{math}
+\end{document}
