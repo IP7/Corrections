@@ -211,25 +211,3 @@ class Fenetre extends JFrame implements ActionListener{
 		}
 	}
 }
-
-class Ex6 extends JPanel implements ActionListener{
-	LinkedList<JButton> liste_boutons = new LinkedList<JButton>();
-	JMenuItem add, pop;	
-	JButton b = new JButton("button");
-	
-	LinkedList<JButton> getListe(){
-		return liste_boutons;
-	}
-
-	Ex6(){
-		setSize(Tp2.fenetre_x, Tp2.fenetre_y);
-		b.addActionListener(this);
-		this.add(new JButton("r"));
-		add(b);
-		setVisible(true);
-	}
-	
-	public void actionPerformed(ActionEvent e) {
-		
-	}
-}
