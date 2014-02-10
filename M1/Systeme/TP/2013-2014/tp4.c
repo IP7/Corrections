@@ -45,8 +45,8 @@ void ex1(){
 void ex2(){
   char buffer[BUFSIZ+1];
   int file;
+  ssize_t i;
   int fd[2];
-  int i;
 
   if(pipe(fd) == -1){
     perror("pipe");
@@ -56,27 +56,13 @@ void ex2(){
   if((file = open("utilisateur.txt", 
 		  O_RDWR | O_CREAT, S_IRUSR | S_IWUSR)) == -1){
     perror("open");
+    exit(EXIT_FAILURE);    
   }  
   switch(fork()){
   case -1:
     perror("fork");
     exit(EXIT_FAILURE);
   case 0:
-    /*
-    file = open("utilisateur.txt", O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
-    if(dup2(file, STDOUT_FILENO) == -1){
-      perror("dup2");
-      exit(EXIT_FAILURE);
-    }
-    if(dup2(file, STDERR_FILENO) == -1){
-      perror("dup2");
-      exit(EXIT_FAILURE);
-    } 
-    if(close(file) == -1){
-      perror("close");
-      exit(EXIT_FAILURE);
-    }
-    */
     if(close(fd[0]) == -1){
       perror("close");
       exit(EXIT_FAILURE);
@@ -100,12 +86,11 @@ void ex2(){
      perror("close");
      exit(EXIT_FAILURE);
    }
-   if(read(fd[0], buffer, sizeof(buffer)) == -1){
+   if((i = read(fd[0], buffer, sizeof(buffer))) == -1){
      perror("read");
    }
-   for(i = 0; buffer[i] != '\0' && i < BUFSIZ; i++);
    if(write(file, buffer, i) == -1){
-      perror("write");
+     perror("write");
     }
     if(close(file) == -1){
       perror("close");
@@ -155,7 +140,6 @@ void ex2_2(){
       perror("read");
       exit(EXIT_FAILURE);
     }
-    //printf("%s", buffer);
     for(i = 0; buffer[i] != '\0'; i++){
       if(buffer[i] == '\n'){
 	nb_lines++;
@@ -339,7 +323,7 @@ void ex3(int argc, char *argv[]){
 int main(int argc, char *argv[]){
   if(argc < 2){
     fprintf(stderr, "need argument <exercice>\n"
-	    "exercie:\n\t"
+	    "exercice:\n\t"
 	    "1\n\t"
 	    "2\n\t"
 	    "22(ex 2 part 2)\n\t"
