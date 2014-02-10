@@ -13,10 +13,13 @@ void ex1(){
   
   if(pipe(fd) == -1){
     perror("pipe");
+    exit(EXIT_FAILURE);
   }
   
   switch(fork()){
   case -1:
+    perror("fork");
+    exit(EXIT_FAILURE);
     break;
   case 0:
     write(fd[1], "Salut Papa!\n", strlen("Salut Papa!\n"));
@@ -25,7 +28,7 @@ void ex1(){
     break;
   default:
     if(wait(NULL) == -1){
-      exit(0);
+      exit(EXIT_FAILURE);
     }
     write(fd[1], "Salut Fiston!\n", strlen("Salut Fiston!\n"));
     read(fd[0], buffer, BUFSIZ);
@@ -43,17 +46,23 @@ void ex2(){
   char buffer[BUFSIZ+1];
   int file;
   int fd[2];
+  int i;
 
   if(pipe(fd) == -1){
     perror("pipe");
     exit(EXIT_FAILURE);
   }
   
+  if((file = open("utilisateur.txt", 
+		  O_RDWR | O_CREAT, S_IRUSR | S_IWUSR)) == -1){
+    perror("open");
+  }  
   switch(fork()){
   case -1:
     perror("fork");
     exit(EXIT_FAILURE);
   case 0:
+    /*
     file = open("utilisateur.txt", O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
     if(dup2(file, STDOUT_FILENO) == -1){
       perror("dup2");
@@ -63,29 +72,50 @@ void ex2(){
       perror("dup2");
       exit(EXIT_FAILURE);
     } 
-    if(close(file)){
+    if(close(file) == -1){
       perror("close");
       exit(EXIT_FAILURE);
     }
-    if(execlp("w", "", NULL)){
+    */
+    if(close(fd[0]) == -1){
+      perror("close");
+      exit(EXIT_FAILURE);
+    }
+
+    if(dup2(fd[1], STDOUT_FILENO) == -1){
+      perror("dup2");
+      exit(EXIT_FAILURE);
+    }
+    if(dup2(fd[1], STDERR_FILENO) == -1){
+      perror("dup2");
+      exit(EXIT_FAILURE);
+    } 
+
+    if(execlp("w", "", NULL) == -1){
       perror("execlp");
       exit(EXIT_FAILURE);
+    }   
+ default:    
+   if(close(fd[1]) == -1){
+     perror("close");
+     exit(EXIT_FAILURE);
+   }
+   if(read(fd[0], buffer, sizeof(buffer)) == -1){
+     perror("read");
+   }
+   for(i = 0; buffer[i] != '\0' && i < BUFSIZ; i++);
+   if(write(file, buffer, i) == -1){
+      perror("write");
     }
-    break;
-  default:    
-    if(close(fd[1])){
+    if(close(file) == -1){
       perror("close");
       exit(EXIT_FAILURE);
     }
-    if(read(fd[0], buffer, sizeof(buffer)) == -1){
-      perror("read");
-      exit(EXIT_FAILURE);
-    }
-    if(close(fd[0])){
+    if(close(fd[0]) == -1){
       perror("close");
       exit(EXIT_FAILURE);
     }
-  }
+  }  
 }
 
 void ex2_2(){
@@ -266,7 +296,6 @@ void ex3(int argc, char *argv[]){
     exit(EXIT_FAILURE);
   }
   if(pid == 0){
-    printf("chuis la\n");
     if (close(fd[1]) == -1){
       perror("close");
       exit(EXIT_FAILURE);
@@ -309,7 +338,13 @@ void ex3(int argc, char *argv[]){
 
 int main(int argc, char *argv[]){
   if(argc < 2){
-    fprintf(stderr, "need argument <exercice>\n");
+    fprintf(stderr, "need argument <exercice>\n"
+	    "exercie:\n\t"
+	    "1\n\t"
+	    "2\n\t"
+	    "22(ex 2 part 2)\n\t"
+	    "23(ex 2 part 3)\n\t"
+	    "3\n");    
     return 0;
   }
   
