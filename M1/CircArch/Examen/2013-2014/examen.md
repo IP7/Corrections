@@ -23,4 +23,9 @@ S = e2e1 + e0e1 + e0e2
 
 ### c)
 
+Pour se contenter d'utiliser des portes NOR, on utilise les formules suivantes:
+
+a+b = /(/(a+b)+0)
+a.b = /(/(a+0)+/(b+0))
+
 ![](1c.png)
