@@ -1,4 +1,4 @@
-# Examen 2013-2014 Architecture
+# Examen 2013-2014 Architecture, Sujet D
 
 ## Exercice 1
 
@@ -29,3 +29,6 @@ a+b = /(/(a+b)+0)
 a.b = /(/(a+0)+/(b+0))
 
 ![](1c.png)
+
+## Exercice 2
+
