@@ -26,64 +26,68 @@ class MyRectangle extends Rectangle2D.Double {
 		super(x,y,w,h);
 	}
 	public Line2D clip(Line2D segment) {
-		/*double x1 = segment.getX1();
+		double x1 = segment.getX1();
 		double x2 = segment.getX2();
 		double y1 = segment.getY1();
 		double y2 = segment.getY2();
-		*/	
-		for(int i = 0; i < 4 && code(segment.getX1(), segment.getY1()); i++){
-			double d = Math.abs(segment.getY1() - segment.getY2()); 
-			double t = Math.abs(segment.getX1() - segment.getX2());
+			
+		for(int i = 0; i < 4 && code(x1, y1); i++){
+			double d = Math.abs(y1 - y2); 
+			double t = Math.abs(x1 - x2);
 			double b = 0; 
 			double v = 0;
 
-			if(segment.getX1() < x){
+			if(x1 < x){
 				System.out.println("G");
-				b = Math.abs(segment.getX1() - x);
+				b = Math.abs(x1 - x);
 				v = (b*d)/t;
-			} else if(segment.getX1() > x + width){
+			} else if(x1 > x + width){
 				System.out.println("D");
-				b = -1*Math.abs(segment.getX1() - (x + width));
+				b = -1*Math.abs(x1 - (x + width));
 				v = b*d/t;
-			} else if(segment.getY1() < y){
+			} else if(y1 < y){
 				System.out.println("H");
-				v = Math.abs(segment.getY1() - y);
+				v = Math.abs(y1 - y);
 				b = t*v/d;
 				
-			} else if(segment.getY1() > y + height){
+			} else if(y1 > y + height){
 				System.out.println("B");
-				v = -1*Math.abs(segment.getY1() - y - height);
+				v = -1*Math.abs(y1 - y - height);
 				b = t*v/d;
 			}
-			segment.setLine(segment.getX1() + b, segment.getY1() + v, segment.getX2(), segment.getY2());
+			x1 += b;
+			y1 += v;
 		}
 		
-		for(int i = 0; i < 4 && code(segment.getX2(), segment.getY2()); i++){
-			double d = Math.abs(segment.getY1() - segment.getY2()); 
-			double t = Math.abs(segment.getX1() - segment.getX2());
+		for(int i = 0; i < 4 && code(x2, y2); i++){
+			double d = Math.abs(y1 - y2); 
+			double t = Math.abs(x1 - x2);
 			double b = 0; 
 			double v = 0;
 
-			if(segment.getX2() < x){
+			if(x2 < x){
 				System.out.println("G");
-				b = Math.abs(segment.getX2() - x);
+				b = Math.abs(x2 - x);
 				v = (b*d)/t;
-			} else if(segment.getX2() > x + width){
+			} else if(x2 > x + width){
 				System.out.println("D");
-				b = -1*Math.abs(segment.getX2() - (x + width));
+				b = -1*Math.abs(x2 - (x + width));
 				v = b*d/t;
-			} else if(segment.getY2() < y){
+			} else if(y2 < y){
 				System.out.println("H");
-				v = Math.abs(segment.getY2() - y);
+				v = Math.abs(y2 - y);
 				b = t*v/d;
 				
-			} else if(segment.getY2() > y + height){
+			} else if(y2 > y + height){
 				System.out.println("B");
-				v = -1*Math.abs(segment.getY2() - y - height);
+				v = -1*Math.abs(y2 - y - height);
 				b = t*v/d;
 			}
-			segment.setLine(segment.getX1(), segment.getY1(), segment.getX2() + b, segment.getY2() + v);
+			y2 += v;
+			x2 += b;
+			//segment.setLine(x1, y1, x2 + b, y2 + v);
 		}
+		segment.setLine(x1, y1, x2, y2);
 		return new Line2D.Double(segment.getP1(), segment.getP2());
 	}
 
