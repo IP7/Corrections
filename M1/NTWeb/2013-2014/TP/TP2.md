@@ -20,8 +20,8 @@ Dans la suite, on suppose que le fichier de données s’appelle `photos.txt`.
 
 Les commande suivantes doivent être exécutées dans Gnuplot
 
-1. `plot 'fic'`
-2. `set logscale xy; plot 'fic'`
-3. `set terminal postscript; set output 'out.ps'; plot 'fic'` puis dans le
+1. `plot 'fic2'`
+2. `set logscale xy; plot 'fic2'`
+3. `set terminal postscript; set output 'out.ps'; plot 'fic2'` puis dans le
    shell `pstopdf out.ps` si on souhaite avoir un PDF plutôt qu’un fichier
    Postscript.
