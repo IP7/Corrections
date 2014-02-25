@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1265">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; background-color: #ffffff}
+    span.s1 {font: 12.0px 'Lucida Grande'; background-color: #ffffff}
+    span.s2 {background-color: #ffffff}
+    span.s3 {font: 12.0px 'Lucida Grande'}
+    span.Apple-tab-span {white-space:pre}
+  </style>
+</head>
+<body>
+<p class="p1">une constante c’est pour distinguer quelque chose dans un domaine, par exemple pour personne,</p>
+<p class="p1">une constante désigne une personne en particulier.</p>
+<p class="p2"><br></p>
+<p class="p1">Exercice 1</p>
+<p class="p2"><br></p>
+<p class="p1">1)</p>
+<p class="p1">domaine</p>
+<p class="p1"><span class="Apple-tab-span">	</span>age</p>
+<p class="p1">constantes</p>
+<p class="p1"><span class="Apple-tab-span">	</span>moins de 8 ans: âge</p>
+<p class="p1"><span class="Apple-tab-span">	</span>entre 8 et 12: âge</p>
+<p class="p1"><span class="Apple-tab-span">	</span>plus de 12: age</p>
+<p class="p1">op de test:</p>
+<p class="p1"><span class="Apple-tab-span">	</span>est moins 8: âge -&gt; bool</p>
+<p class="p1"><span class="Apple-tab-span">	</span>est entre 8 et 12: âge -&gt; bool</p>
+<p class="p1"><span class="Apple-tab-span">	</span>est plus 12: âge -&gt; bool</p>
+<p class="p2"><br></p>
+<p class="p1">2)</p>
+<p class="p1">domaine:</p>
+<p class="p1"><span class="Apple-tab-span">	</span>activite_demandee (a.d)</p>
+<p class="p1">constantes:<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-tab-span">	</span>bibliotheque: a.d</p>
+<p class="p1"><span class="Apple-tab-span">	</span>peinture: a.d</p>
+<p class="p1">operation de construction:</p>
+<p class="p1"><span class="Apple-tab-span">	</span>cours_piscine: {x int | 1 ≤ x ≤ 230} <span class="s1">→</span><span class="s2"> a.d</span></p>
+<p class="p3"><span class="Apple-tab-span">	</span>cours_tennis : {(x, y): int, int | 1 ≤ x + y ≤ 100} <span class="s3">→</span> a.d</p>
+<p class="p3">operation de test:</p>
+<p class="p3"><span class="Apple-tab-span">	</span>est_bibliotheque, est_peinture, est_tennis, est_piscine: a.d <span class="s3">→</span> bool</p>
+<p class="p3">opération d’accès:</p>
+<p class="p3"><span class="Apple-tab-span">	</span>nb_piscine: {x: a.d | est_piscine(x) <span class="s3">→</span><span class="Apple-converted-space">  </span>{y: int | 1 ≤ y ≤ 230}}</p>
+<p class="p3"><span class="Apple-tab-span">	</span>nb_matchs_simple {x : a.d | est_tennis(x) } <span class="s3">→</span> {y: int | 1 ≤ y ≤ 100}</p>
+<p class="p1"><span class="s2"><span class="Apple-tab-span">	</span></span>nb_matchs_double {x : a.d | est_tennis(x) } <span class="s3">→</span> {y: int | 1 ≤ y ≤ 100}</p>
+<p class="p1">operations de construction edentue</p>
+<p class="p1"><span class="Apple-tab-span">	</span>int_to_piscine: int <span class="s3">→</span> a.d</p>
+<p class="p1"><span class="Apple-tab-span">	</span>int_int_to_piscine: int, int <span class="s3">→</span> a.d</p>
+<p class="p2"><br></p>
+<p class="p1">domaine:</p>
+<p class="p1"><span class="Apple-tab-span">	</span>ville</p>
+<p class="p1">constante:</p>
+<p class="p1"><span class="Apple-tab-span">	</span>astride: ville</p>
+<p class="p1"><span class="Apple-tab-span">	</span>pas_astride: ville</p>
+<p class="p1">operations de test:</p>
+<p class="p1"><span class="Apple-tab-span">	</span>est_astride: ville <span class="s3">→</span> bool</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1">3)</p>
+<p class="p2"><br></p>
+<p class="p1">domaine:<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-tab-span">	</span>personne</p>
+<p class="p1">constante:</p>
+<p class="p1">operation de construction:</p>
+<p class="p1"><span class="Apple-tab-span">	</span>cons_personne: âge, ville, string -&gt; personne</p>
+<p class="p1">operation de test:</p>
+<p class="p1"><span class="Apple-tab-span">	</span>age_personne: personne -&gt; âge</p>
+<p class="p1"><span class="Apple-tab-span">	</span>ville_personne: personne -&gt; ville<span class="Apple-converted-space"> <span class="Apple-tab-span">	</span></span></p>
+<p class="p1"><span class="Apple-tab-span">	</span>nom_personne: personne -&gt; string</p>
+<p class="p2"><br></p>
+<p class="p1">4)</p>
+<p class="p1">domaine:</p>
+<p class="p1"><span class="Apple-tab-span">	</span>dossier</p>
+<p class="p1">operations de constructions</p>
+<p class="p1"><span class="Apple-tab-span">	</span>cons_dossier: personne, a.d, -&gt; dossier</p>
+<p class="p1">opération d’accès:</p>
+<p class="p1"><span class="Apple-tab-span">	</span>personne_dossier: dossier -&gt; personne</p>
+<p class="p1"><span class="Apple-tab-span">	</span>ad_dossier: dossier -&gt; a.d</p>
+<p class="p2"><br></p>
+<p class="p1">5)</p>
+<p class="p1">domaine:</p>
+<p class="p1"><span class="Apple-tab-span">	</span>liste_dossier (liste.d)</p>
+<p class="p1">constante:</p>
+<p class="p1"><span class="Apple-tab-span">	</span>liste_vide: liste.d</p>
+<p class="p1">opération de construction</p>
+<p class="p1"><span class="Apple-tab-span">	</span>nom_liste: dossier, liste.d -&gt; liste.d</p>
+<p class="p1">operation de test:</p>
+<p class="p1"><span class="Apple-tab-span">	</span>est_liste_vide: liste.d -&gt; bool</p>
+<p class="p1">opération d’accès:</p>
+<p class="p1"><span class="Apple-tab-span">	</span>tête: {x: liste.d | mot (est_liste_vide(x)} -&gt; dossier</p>
+<p class="p1"><span class="Apple-tab-span">	</span>queue: {x: liste.d | mot (est_liste_vide(x)} -&gt; liste.d</p>
+<p class="p2"><span class="Apple-tab-span">	</span></p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1">6)</p>
+<p class="p1">Fonct a_droits_age_ville(p, a): personne, a.d -&gt; boo<span class="Apple-tab-span">	</span>l</p>
+<p class="p1"><span class="Apple-tab-span">	</span>Si(</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>est_piscine(a) ou est_peinture(a) ou<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>(est_bibliotheque(a) and est_plus_12(p)) ou<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>(est_tennis(a) and est_astride(ville_personne(p)) and not moins_8(age_personne(p)))</p>
+<p class="p1"><span class="Apple-tab-span">	</span>)alors</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>renvoie Vrai</p>
+<p class="p1"><span class="Apple-tab-span">	</span>renvoie Faux</p>
+<p class="p1">finFonct</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1">7)</p>
+<p class="p1">a_droit_dossier -&gt; bool</p>
+<p class="p2"><br></p>
+<p class="p1">a_droit_dossier(d)=</p>
+<p class="p1"><span class="Apple-tab-span">	</span>a_droit_age_ville(personne_dossier(d), ad_dossier(d))</p>
+<p class="p2"><br></p>
+<p class="p1">8)</p>
+<p class="p1">Fonct prix_dossier(d): dossier-&gt; int<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-tab-span">	</span>soit p = personne_dossier(d) et a = ad_dossier(d) dans</p>
+<p class="p1"><span class="Apple-tab-span">	</span>Si (est_piscine(a) then</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>renvoie 15 * nb_piscine(a)</p>
+<p class="p1"><span class="Apple-tab-span">	</span>Sinon Si (est_bibliotheque(a))</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>renvoie 0</p>
+<p class="p1"><span class="Apple-tab-span">	</span>Sinon Si (est_peinture(a))</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>Si(plus_12(age_personne(p))</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>renvoie 1500</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>Sinon<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>renvoie 1300</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>finSi</p>
+<p class="p1"><span class="Apple-tab-span">	</span>Sinon</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>renvoie 40 * nb_matchs_simples(a) + nb_matchs_double(a)</p>
+<p class="p1"><span class="Apple-tab-span">	</span>finSi</p>
+<p class="p1">finFonct</p>
+<p class="p2"><br></p>
+<p class="p1">9)<span class="Apple-converted-space"> </span></p>
+<p class="p1">Fonct prix-global(l): liste.d -&gt; int</p>
+<p class="p1"><span class="Apple-tab-span">	</span>Si est_liste_vide(l) alors</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>0</p>
+<p class="p1"><span class="Apple-tab-span">	</span>Sinon</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>soit d = tête(l) et q = queue(l) dans</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>Si a_droits_dossiers(d)</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>prix_dossier(d) + prix_global(q)</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>Sinon<span class="Apple-tab-span">	</span></p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>prix_global(q)</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>finSi</p>
+<p class="p1"><span class="Apple-tab-span">	</span>finSi</p>
+</body>
+</html>
