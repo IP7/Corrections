@@ -15,7 +15,7 @@ void ex1(int argc, char const *argv[]){
 		return ;
 	}
 
-	n = atoi(argv[2]);
+	n = strtol(argv[2], NULL, 10);
 	if((numbers = malloc(sizeof(char) * n)) == NULL){
 		perror("malloc");
 		exit(EXIT_FAILURE);
@@ -81,7 +81,7 @@ void signal_handler(int signal_id){
 		fprintf(stderr, "Lecture à l'adresse nulle interdite.\n");
 		exit(EXIT_FAILURE);
 	} else {
-		printf("Ctrl^C intercepté\n");
+		fprintf(stderr, "Ctrl^C intercepté\n");
 	}
 }
 
