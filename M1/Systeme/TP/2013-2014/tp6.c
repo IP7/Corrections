@@ -3,7 +3,7 @@
 #include <string.h>
 #include <signal.h>
 #include <unistd.h>
-
+#include <errno.h>
 void ex1(int argc, char const *argv[]){
 	int n = 0;
 	int i = 0;
@@ -12,10 +12,16 @@ void ex1(int argc, char const *argv[]){
 
 	if(argc < 3){
 		fprintf(stderr, "Need one argument <integer>\n");		
-		return ;
+		exit(EXIT_FAILURE);
 	}
 
 	n = strtol(argv[2], NULL, 10);
+	
+	if(errno == EINVAL){
+		fprintf(stderr, "invalide argument\n");
+		exit(EXIT_FAILURE);	
+	}
+	
 	if((numbers = malloc(sizeof(char) * n)) == NULL){
 		perror("malloc");
 		exit(EXIT_FAILURE);
@@ -69,19 +75,19 @@ void ex2(int argc, char const *argv[]){
 		exit(EXIT_SUCCESS);
 	}
 	//sleep(10); //question 1 : Ctrl^C tue le père et ses deux fils 
-	kill(p1, 2);
-	kill(p2, 2);
-	kill(getpid(), 2); // question 2: ce kill ne tue que le pere
+	//kill(p1, 2);//q3
+	//kill(p2, 2);//q3
+	//kill(getpid(), 2); // question 2: ce kill ne tue que le pere
 }
 
 
 
 void signal_handler(int signal_id){
 	if(signal_id == SIGSEGV){
-		fprintf(stderr, "Lecture à l'adresse nulle interdite.\n");
+		puts( "Lecture à l'adresse nulle interdite.\n");
 		exit(EXIT_FAILURE);
 	} else {
-		fprintf(stderr, "Ctrl^C intercepté\n");
+		puts("Ctrl^C intercepté\n");
 	}
 }
 
