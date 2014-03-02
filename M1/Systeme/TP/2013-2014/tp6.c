@@ -9,19 +9,26 @@ void ex1(int argc, char const *argv[]){
 	int i = 0;
 	int j = 0;
 	char *numbers = NULL;
+	char *err;
 
 	if(argc < 3){
 		fprintf(stderr, "Need one argument <integer>\n");		
 		exit(EXIT_FAILURE);
 	}
 
-	n = strtol(argv[2], NULL, 10);
-	
-	if(errno == EINVAL){
-		fprintf(stderr, "invalide argument\n");
-		exit(EXIT_FAILURE);	
-	}
-	
+	n = strtol(argv[2], err, 10);
+
+    if ((errno == ERANGE && (n == LONG_MAX || n == LONG_MIN)) 
+    		|| (errno != 0 && n == 0)) {
+        perror("strtol");
+        exit(EXIT_FAILURE);
+    }
+
+    if (err == str) {
+        fprintf(stderr, "argument isn't a number\n");
+        exit(EXIT_FAILURE);
+    }
+
 	if((numbers = malloc(sizeof(char) * n)) == NULL){
 		perror("malloc");
 		exit(EXIT_FAILURE);
@@ -84,10 +91,10 @@ void ex2(int argc, char const *argv[]){
 
 void signal_handler(int signal_id){
 	if(signal_id == SIGSEGV){
-		puts( "Lecture à l'adresse nulle interdite.\n");
+		write(STDERR_FILENO, "Lecture à l'adresse nulle interdite.\n", sizeof("Lecture à l'adresse nulle interdite.\n"));
 		exit(EXIT_FAILURE);
 	} else {
-		puts("Ctrl^C intercepté\n");
+		write(STDERR_FILENO, "Ctrl^C intercepté\n", sizeof("Ctrl^C intercepté\n"));
 	}
 }
 
