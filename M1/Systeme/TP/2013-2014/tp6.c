@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <signal.h>
+#include <limits.h>
 #include <unistd.h>
 #include <errno.h>
 void ex1(int argc, char const *argv[]){
@@ -16,15 +17,17 @@ void ex1(int argc, char const *argv[]){
 		exit(EXIT_FAILURE);
 	}
 
-	n = strtol(argv[2], err, 10);
+	errno = 0;
+	n = strtol(argv[2], &err, 10);
 
-    if ((errno == ERANGE && (n == LONG_MAX || n == LONG_MIN)) 
+    if ((errno == ERANGE && (n == INT_MAX || n == INT_MIN)) 
     		|| (errno != 0 && n == 0)) {
         perror("strtol");
         exit(EXIT_FAILURE);
     }
 
-    if (err == str) {
+
+    if (*err != '\0') {
         fprintf(stderr, "argument isn't a number\n");
         exit(EXIT_FAILURE);
     }
@@ -91,10 +94,12 @@ void ex2(int argc, char const *argv[]){
 
 void signal_handler(int signal_id){
 	if(signal_id == SIGSEGV){
-		write(STDERR_FILENO, "Lecture à l'adresse nulle interdite.\n", sizeof("Lecture à l'adresse nulle interdite.\n"));
+		char *c = "Lecture à l'adresse nulle interdite.\n";
+		write(STDERR_FILENO, c, strlen(c));
 		exit(EXIT_FAILURE);
 	} else {
-		write(STDERR_FILENO, "Ctrl^C intercepté\n", sizeof("Ctrl^C intercepté\n"));
+		char *c = "Ctrl^C intercepté\n";
+		write(STDERR_FILENO, c, strlen(c));
 	}
 }
 
