@@ -1,26 +1,81 @@
-*~
+# Android
+*.apk
+*.ap_
+*.dex
+gen/
 
-# Vim
-*.swp
-*.swo
-Session.vim
+# Archives
+*.zip
+*.tgz
+*.tar
+*.gz
+*.bz2
+*.7z
+*.rar
+
+# Autotools
+Makefile.in
+
+# C
+a.out
+*.s
+*.ko
+*.elf
+*.so.*
+*.i*86
+*.x86_*
+*.hex
+
+# C++
+*.slo
+*.lo
+*.o
+*.obj
+*.so
+*.dylib
+*.dll
+*.lai
+*.la
+*.a
+*.lib
+*.exe
+*.app
+
+# Coq
+*.vo
+*.glob
+*.v.d
+
+# Eclipse
+.cproject
+.buildpath
+.target
+.texlipse
+.metadata
 
 # Emacs
 \#*\#
+.org-id-locations
 
-# ST
-*.sublime-workspace
+# etags, ctags
+gtags.files
+cscope.out
+cscope.files
+cscope.*.out
 
 # Java
 *.class
 *.jar
+*.war
+*.ear
 
-# C
-a.out
-
-# Python
-*.pyc
-__pycache__
+# LaTeX
+*.aux
+*.dvi
+*.idx
+*.log
+*.ps
+*.toc
 
 # OCaml
 *.annot
@@ -33,22 +88,63 @@ __pycache__
 *.cmxs
 *.cmxa
 
-# R
-.Rhistory
-
-# LaTeX
-*.aux
-*.dvi
-*.idx
-*.log
-*.ps
-*.toc
+# OS X
+.DS_Store
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+._*
 
 # PDF & co
 *.pdf
 *.ps
 
-# OS X
-.DS_Store
-.Spotlight-V100
-.Trashes
+# Python
+*.pyc
+*.egg
+coverage.xml
+nosetests.xml
+__pycache__
+
+# R
+.Rhistory
+
+# ST
+*.sublime-*
+
+# TextMate
+*.tmproj
+*.tmproject
+tmtags
+
+# Vagrant
+.vagrant
+
+# Vim
+*.sw*
+Session.vim
+
+# Virtualenv
+venv/
+.venv/
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+
+# XCode
+*.xcodeproj
+
+# other tmp files
+*~
+*.bak
+*.tmp
+.history
+.cache
