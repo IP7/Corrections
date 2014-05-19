@@ -87,6 +87,8 @@ def read_sms(name):
 
 ### Question 2
 
+Il faut ajouter `import re` en haut du fichier.
+
 ```py
 def is_spam(msg):
     return re.search(r"\b0899\d{6}\b", msg)
@@ -94,6 +96,8 @@ def is_spam(msg):
 def no_spams(sms):
     for num in sms:
         sms[num] = [s for s in sms[num] if not is_spam(s[2])]
+
+    return sms
 ```
 
 ### Question 3
@@ -105,6 +109,8 @@ def is_ad(msg):
 def no_ads(sms):
     for num in sms:
         sms[num] = [s for s in sms[num] if not is_ad(s[2])]
+
+    return sms
 ```
 
 ### Question 4
@@ -154,7 +160,9 @@ def is_too_old(date):
 
 def remove_old(sms):
     for num in sms:
-        sms[num] = [s for s in sms[num] if not is_too_old(s[1])]
+        sms[num] = [s for s in sms[num] if not is_too_old(s[0])]
+
+    return sms
 ```
 
 ### Question 7
@@ -172,9 +180,9 @@ if __name__ == '__main__':
 
         for num in sms:
             for s in sms[num]:
-                d = s[1]
-                h = s[2]
-                m = s[3]
+                d = s[0]
+                h = s[1]
+                m = s[2]
                 print "SMS de " + num + ", recu le " + d + " à " + h + " : " + m
 
 ```
