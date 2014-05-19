@@ -1,5 +1,7 @@
 # Examen corrigé de LS4 - 2012 - session 1
 
+Correction par Baptiste Fontaine pour IP7.
+
 ## Exercice 1
 
 ### Question 1
