@@ -73,11 +73,11 @@ suivante (ligne 12).
 
 La variable `x` est une fonction (comme on peut le voir ligne 24), elle prend
 en argument une valeur d’abscisse et renvoit la valeur à utiliser sur le
-graphe, de façon à rester entre 0 et la largeur du graphe.
+graphique, de façon à rester entre 0 et la largeur du graphique.
 
 #### Question 5
 
-La chaîne `".dot"` à la ligne 19 désigne les points du graph, qui sont des
+La chaîne `".dot"` à la ligne 19 désigne les points du graphique, qui sont des
 éléments SVG avec une `class` `dot`. Si on modifie cette chaîne, il faut
 changer également la ligne 22, et la feuille de style CSS s’il y en a une qui
 utilise cette classe.
